@@ -37,10 +37,10 @@ with tab1:
 
     col1, col2 = st.columns(2)
     with col1:
-        sg_current_balance = st.number_input("Current Super Balance ($)", min_value=0, value=240000, step=10000)
-        sg_annual_contribution = st.number_input("Annual Contribution to Super ($)", min_value=0, value=30000, step=1000)
+        sg_current_balance = st.number_input("Current Super Balance ($)", min_value=0, value=0, step=10000)
+        sg_annual_contribution = st.number_input("Annual Contribution to Super ($)", min_value=0, value=0, step=1000)
     with col2:
-        sg_annual_return = st.slider("Annual Super Return Rate (%)", min_value=1.0, max_value=10.0, value=20.0, step=0.1) / 100
+        sg_annual_return = st.slider("Annual Super Return Rate (%)", min_value=1.0, max_value=20.0, value=5.0, step=0.1) / 100
         sg_years = st.slider("Number of Years to Project", min_value=1, max_value=50, value=10, step=1)
 
     if st.button("Calculate Super Growth"):
@@ -53,12 +53,12 @@ with tab2:
 
     col1, col2 = st.columns(2)
     with col1:
-        tr_start_age = st.number_input("Your Current Age", min_value=18, max_value=60, value=38, step=1)
-        tr_current_balance = st.number_input("Current Super Balance ($) ", min_value=0, value=240000, step=10000)
+        tr_start_age = st.number_input("Your Current Age", min_value=18, max_value=60, value=18, step=1)
+        tr_current_balance = st.number_input("Current Super Balance ($) ", min_value=0, value=0, step=10000)
         tr_annual_contribution = st.number_input("Annual Contribution to Super ($) ", min_value=0, value=30000, step=1000)
     with col2:
-        tr_target_balance = st.number_input("Target Super Balance ($)", min_value=100000, value=950000, step=10000)
-        tr_annual_return = st.slider("Annual Super Return Rate (%) ", min_value=1.0, max_value=10.0, value=20.0, step=0.1) / 100
+        tr_target_balance = st.number_input("Target Super Balance ($)", min_value=0, value=0, step=10000)
+        tr_annual_return = st.slider("Annual Super Return Rate (%) ", min_value=1.0, max_value=20.0, value=5.0, step=0.1) / 100
         
 
     if st.button("Calculate Years to Target"):
@@ -86,11 +86,11 @@ with tab3:
             target_income_label = "Desired Annual Combined After-Tax Income ($)"
             st.info("For 'couple' scenario, all super and income figures are **combined** for both partners.")
             
-        ri_start_super = st.number_input(super_balance_label, min_value=0, value=950000 if ri_relationship_status == 'single' else 1400000, step=10000)
+        ri_start_super = st.number_input(super_balance_label, min_value=0, value=0 if ri_relationship_status == 'single' else 1400000, step=10000)
         ri_start_age = st.number_input("Age at Retirement Start (for eldest partner if couple)", min_value=60, max_value=75, value=65, step=1)
         
     with col2:
-        ri_end_age = st.number_input("Project Until Age", min_value=80, max_value=100, value=95, step=1)
+        ri_end_age = st.number_input("Project Until Age", min_value=80, max_value=100, value=100, step=1)
         ri_super_return = st.slider("Super Return Rate During Retirement (%)", min_value=1.0, max_value=20.0, value=4.0, step=0.1) / 100
         ri_target_income = st.number_input(target_income_label, min_value=0, value=60000 if ri_relationship_status == 'single' else 90000, step=1000)
 
